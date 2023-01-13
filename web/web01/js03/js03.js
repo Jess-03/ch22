@@ -7,7 +7,7 @@ const datoUsuario = {nombre: "Jessica", ciudad:"CDMX"};
     // sólo tendran alcance dentro del bloque o
     // bloque anidados dentro del bloque.
     const datoUsuario = {nombre: "Wicho", ciudad:"Aguascalientes"};
-    const numPersonas = 49;
+    //const numPersonas = 49;
     console.log(`${datoUsuario.nombre} nos saluda de ${datoUsuario.ciudad}`)
     {
         console.log(`${datoUsuario.nombre} nos saluda de ${datoUsuario.ciudad}`)
@@ -38,7 +38,7 @@ console.log(`${datoUsuario.nombre} nos saluda de ${datoUsuario.ciudad}`)
 
 const respuesta = true;// confirm("¿Te gusta Shakira?");
 console.log(respuesta);
-let mensaje = "Me gusta Ruelle";
+let mensaje;
 
 if(respuesta){
     mensaje = "Entonces te pongo Waka Waka";
@@ -62,10 +62,11 @@ console.log(mensaje);
     condición ? condición_verdadera : condición_ falsa;
 */
 
-//let teamFrio = confirm("¿Te gusta el frío?"); 
-//let mensajeTernario = teamFrio ? "Entonces te mando hielito" : "Te mando ponche";
-//console.log(`Te voy a servir: ${mensajeTernario}`);
-//console.log(`Te voy a servir: ${ teamFrio ? "hielito":"Ponche"}`)
+let teamFrio = confirm("¿Te gusta el frío?"); 
+let mensajeTernario = teamFrio ? " hielito" : "ponche";
+console.log(`Te voy a servir: ${mensajeTernario}`);
+//console.log(`Te voy a servir: ${ teamFrio ? "hielito":"Ponche"}`)  
+//lo anterior es otra forma de escribir el resultado
 
 let cantante = "Piqué";
 //console.log(`Tu reloj es ${ cantante === `Shakira` ? "Rolex": "Casio"}`);
@@ -92,7 +93,7 @@ if ( nombrePersona === "Shakira")
     marcaReloj = "Rolex";
 else if ( cantante === 'Pique') 
     marcaReloj = "Casio";
-else if ( cantante === 'Sergio') 
+else if ( cantante === 'Selena') 
     marcaReloj = "el sol";
 else marcaReloj = "uno de cars"; 
 
@@ -136,12 +137,13 @@ console.log(`${nombrePersona} tu reloj es ${marcaReloj}`);
                 caso n:
                     intrucciones;
                     break;
-                default
+                default:
+                    instrucciones;
             }
 break sino conituna leyendo las otras instrucciones
 */
 
-nombrePersona = "Sergio";
+nombrePersona = "Selena";
 marcaReloj = "";
 switch(nombrePersona){
     case "Shakira":
@@ -151,7 +153,7 @@ switch(nombrePersona){
     case "Karla":
         marcaReloj = "Casio";
         break;
-    case "Sergio":
+    case "Selena":
         marcaReloj = "El sol";
         break;
     default:
@@ -177,10 +179,10 @@ switch
 */
 
 
-let estacion = prompt("Que estación del año es el mes:"); 
+let numMes = prompt("Que estación del año es el mes:"); 
 
-let numMes = "";
-switch(estacion){
+let estacion;
+switch(numMes){
     case "1":
     case "2":
     case "12":
@@ -206,4 +208,20 @@ switch(estacion){
 }
 
 console.log(`En el mes ${numMes} la estación del año es: ${estacion}`);
+
+//Refactorizar usando un operador ternario
+/* function factorial( number ){
+    if( number < 1) 
+        return 1;
+    return number * factorial( number - 1 )
+}
+console.log("Factorial 5 = " + factorial(5) ); //120 */
+
+
+
+function factorial( number ) {
+   return number< 1 ? : number * factorial( number - 1 );
+}
+
+console.log(`Factorial 5 = " ${factorial(5)}`); //120 uhiuhi
 
