@@ -457,3 +457,4 @@ console.log("Sacando a la venta " + productos.pop()); //otra opcion productos[2]
 console.log("Sacando a la venta " + productos.pop()); // cemento
 console.log("Sacando a la venta " + productos.pop()); // desarmadores
 
+
