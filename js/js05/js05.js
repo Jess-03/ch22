@@ -232,7 +232,7 @@ if(numRebosos > 0 || teGustaReboso && vivesEnElExtranjero) // & es como una suma
 
 
 /* 
-        OPERADORES DE CORTO CIRCUITO
+        OPERADORES DE CORTO CIRCUITO   Es lo que más se utiliza ahhh! 
 
         OP1 && OP2 
         Si OP1 = true se realiza el resultado de OP2
@@ -253,20 +253,75 @@ let edadPersona = 18;
     // vale más el + que el &&
 
 
-    //OP1 || OP3  Si OP1 = true, se realiza el resultado de OP1
+    //OP1 || OP2  Si OP1 = true, se realiza el resultado de OP1
 
     let isOnline = true;
-    let isActive = true;
+    let isActive = true; // como estan en true se van a ejecutar
 
     if( isOnline){
         if (isActive)
-        console.log("Estamos in");
+        console.log("Estamos in*/Autorizados");
     }
 
     //segunda forma de hacerlo
-
-    if (isOnline && isActive)
-    console.log("Estamos in");
+        // T            T      =  True
+    if (isOnline && isActive) // se ejecuta y se imprime mensaje
+    //     F           T       = False ya no se ejecuta
+    //     T           F       = False ya no se ejecuta
+    console.log("Estamos in/autorizados");
 
     //es más limpio, más común 
-    isOnline && isActive && console.log("Estamos in");
+//  [      1         ]   [ 2
+//  [         T         ]  [  T
+    isOnline && isActive && console.log("Estamos in/autorizados");
+//  
+// continuación...
+
+let edadMiSobrina = 20;
+console.log( edadMiSobrina > 18 && "Puede votar"); // Puede votar 
+//          [                 ] [               ] 
+//[Es de mayor prioridad el mayor que >] revisar pág en MDN precedencia
+
+edadMiSobrina = 15; 
+console.log( edadMiSobrina > 18 && "Puede votar"); // false
+//         (      False       ) (ya no se ejecuta)
+
+let numDeQuesadillaAComer = "3";
+let guisado = "Huitlacoche";
+console.log("Monse comerá quesadilla de " + numDeQuesadillaAComer&&guisado);//Huitlacoche
+// Tenemos dos operadores :  +  y  && 
+// + tiene un nivel 12    && tiene 5 
+// sting da false si esta vacio 
+
+// se ponen antes los parentesis para que pueda concatenar la otra operacion
+console.log("Monse comerá quesadilla de " + (numDeQuesadillaAComer&&guisado));
+
+let nombreConductor = "";
+let tieneLicenciaConducir = true;
+let edadConductor = 50;
+
+//                       F                      F                      T
+//             12 (3.)                 5  (1.)                      5 (2.)
+const seRentaAuto = nombreConductor && tieneLicenciaConducir && edadConductor<60;
+
+console.log("Resultado" + seRentaAuto);
+//solito "seRentaAuto" sale vació "se imprime un empty string"
+// regresa nada por que el string está vacio 
+
+//Con Pax                    T
+//const seRentaAuto = nombreConductor && tieneLicenciaConducir && edadConductor<60;
+
+const datosQuesadilla = {
+    tortilla: "maiz",
+    tieneQueso: true,
+    pica: "poquito"
+}
+
+const picaLaQuesadilla = datosQuesadilla.pica && "Pica mucho";
+console.log(picaLaQuesadilla);//undefined
+//cuando se lea un dato y no exista va a da indefinido 
+//convertido a boolenao daria falso
+
+// ahora añadiendo pica sale "Pica mucho"
+// && boolenao va a dar true o false
+// && y otro tipo de dato da ese dato
