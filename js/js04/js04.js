@@ -103,7 +103,7 @@ console.log("Actualización de armas: " + armasCh22);
     
         i = iteration 
         ++i preincremento --> primero incrementa y luego se lee la variable.
-        i++ incremento --> primero lee la variable y luego incrementa.
+        i++ post incremento --> primero lee la variable y luego incrementa.
 */
 
 
@@ -149,27 +149,29 @@ for (let arma of armasCh22)
 for (let i = armasCh22.length - 1; i >= 0; i--)
     console.log("Arma: " + armasCh22[i]);
 
-// Para el ciclo for no es necesario indicar el inicio,
-//la comparacion, o la expresion final 
-
-//ATENCION 
-
-//1. Puedo no poner la expresion uniciol
 
 
-//variable b
-let iteracion = 0;
-for (; ; iteracion++) {
-    console.log("valor de i" + iteracion);
-    if (iteracion === 10) break;
-    iteracion++;
+//---------Parte 2
+
+/* Regresando al tema de ciclo for 
+
+    *Nota: Para el ciclo for no es necesario indicar:
+    el inicio  (let i = 0)
+    la comparación (i > 0)
+    o la expresión final  (i++) 
+
+*/
+
+let iteracion = 0;  // aquí está el inicio
+for ( ; ; ) {
+    console.log("valor de i: " + iteracion);
+    if (iteracion === 10) break; //aquí está la comparación 
+    iteracion++;  // aquí la expresión final
 }
 
-//al no tener una comparacion lo pondríamos abajo en i === 10
-
-/*
-La instruccion break rompe cn la iteracion
-La instruccion continue continua con la sig iteración
+/* Break y continue
+    • La instruccion break rompe con la iteración
+    • La instruccion continue avanza con la sig iteración
 */
 
 for (let i = 0; i <= 10; i++) {
@@ -177,200 +179,147 @@ for (let i = 0; i <= 10; i++) {
     console.log("For con break: " + i);
 }
 
-// imprimiria hasta el 4 por que esta contando desde el 0
+// imprimiría hasta el 4 por que esta contando desde el 0
 
 for (let i = 0; i <= 10; i++) {
     if (i === 11) break;
-    console.log("For con break: " + i);
+    console.log("For con break: " + i);  //imprimiría del 0 al 10 
 }
 
-//imprimiría del 0 al 10 
-
+//Continue
+//no toma en cuenta ese valo, pero continua con el sig número/iteracion
 for (let i = 0; i <= 10; i++) {
-    //no toma en cuenta ese, pero continua con el sig numero/iteracion
     if (i === 5) continue;
-    console.log("For con continue: " + i);
-}
-
-// o, 1 2 3 4  6 7 8 9 10
-
-//Paara los anteriores caso si no le pongo un valor de inicio ie 
-// let i = 0 osea let i="" empezaría a partir del 1
+    console.log("For con continue: " + i); 
+} // Va a imprimir: 0, 1 , 2, 3, 4,   6, 7, 8, 9, 10
 
 
-/*
-Arreglos de dos dimensiones
+/* 
+    Nota:
+    Para los anteriores casos, si no declaro la expresión de inicio,
+    es decir, en vez de poner let i = 0 le pongo let i = ""
+    empezaría a contar a partir del 1
+*/
 
-una dimension es una sola fila  [ "", "", "" ]
+//-----------------------------------------------
 
-De dos dimensiones sería:
-[ [], [] [] ]   cada uno es una fila []
-  0   1  2  -- > índices
+/* Arreglos de dos dimensiones
 
-
+    • Un arreglo de una dimensión, es una sola fila  [ "", "", "" ]
+    •Un arreglo de dos dimensiones sería:
+    [ [], [] [] ]   cada uno es una fila []
+      0   1  2  -- > índices
 */
 
 
 const participantes = [
-    ["José", "María", "Pedro"],   //CH1   --> Fila 1
-    ["Tania", "Javi", "Andrea", "Santi"], //CH2  --> Fila2
-    ["Melanie", "Pavel"] // CH3 --> Fila 3
+    [ "José"   , "María", "Pedro"],           //CH1  --> Fila 0
+    [ "Tania"  , "Javi" , "Andrea", "Santi"], //CH2  --> Fila 1
+    [ "Melanie", "Pavel" ]                    //CH3 --> Fila 2
 ];
+//     0          1         2         3   Columna
 
-// Columna:
-//    0            1         2         3
-
-//Feliz    cumpleaños 
-// [Fila] [Columna]
-
+/* 
+    Tip para recordar:  Feliz cumpleaños
+                {{{{5}}}}        [Fila] [Columna]
+*/
+                                                            //[F][C]
 console.log("Persona CH3(f2) 2a persona(c1): " + participantes[2][1]);
 console.log("Persona CH2(f1) 1a persona(c0): " + participantes[1][0]);
-console.log("Persona CH2(f0) 3a persona(c2): " + participantes[0][2]);
+console.log("Persona CH1(f0) 3a persona(c2): " + participantes[0][2]);
 
-/* ------------------------------------------
- for (let i = 0; i < participantes.length; i++) {
-    console.log(participantes[i]); //iterando las filas
+//------------------------------------------
+
+
+/* for (let i = 0; i < participantes.length; i++) {
+    console.log(participantes[i]); //Iterando las filas
     for (let j = 0; j < participantes[i].length; j++) {
         console.log(participantes[i][j]);
     }
-}
+} */
 
-
-// se pone i y j
-
-// i=fila
-// j= columna
-
-//[i] nos entrega la fila entrega
+/*  Mismo caso, pero se renombran las variables:
+    • i = fila
+    • j = columna
+*/
 
 for (let fila = 0; fila < participantes.length; fila++) {
-    console.log(participantes[fila]); //iterando las filas
+    console.log(participantes[fila]);
     for (let columna = 0; columna < participantes[fila].length; columna++) {
         console.log(participantes[fila][columna]);
     }
 }
 
 
-//Usando break en ciclos anidados
 /*
-Dejar de mostrar los nombres, cuando se encuentre a Tan
+    Usando break en ciclos anidados
 */
 
+//Dejar de mostrar los nombres cuando se encuentre a Tania.
 
-//Sin break:
+// 1. Usando una variable bandera
+//    let continuarIteraciones = false con eso lo paro
 
-// let continuarIteraciones = true;
-
-// for (fila = 0; fila < participantes.length; fila++) {
-//     if (continuarIteraciones) {
-//         for (let columna = 0; columna < participantes[fila].length; columna++) {
-//             if(continuarIteraciones)
-//             console.log("Uso de break: " + participantes[fila][columna]);
-//             if (participantes[fila][columna] === "Tan") continuarIteraciones= false;
-//         }
-//     }
-
-// }
-
-// //Usando una variable como bandera
-//  let continuarIteraciones = true;
-//  for (let fila = 0; fila < participantes.length; fila++) {
-//     for (let columna = 0; columna < participantes[fila].length; columna++) {
-//          console.log(`[${fila}] [${columna}]`);
-//          if (continuarIteraciones)
-//             console.log("No se usa break, pero si bandera: " + participantes[fila][columna]);
-//          if (participantes[fila][columna] === "Tan") continuarIteraciones = false;
-//     }
-
-// }
-
-
-// //Usando break
-// cicloFila:
-// for (fila = 0; fila < participantes.length; fila++) {
-//     cicloColumna :
-//     for (let columna = 0; columna < participantes[fila].length; columna++) {
-//         console.log(`[${fila}] [${columna}]`);
-//         console.log("Uso de break " + participantes[fila][columna]);
-//         if (participantes[fila][columna] === "Tan") break cicloFila;
-//     }
-// }
-
-// //Usando continue
-// for (let fila = 0; fila < participantes.length; fila++) {
-//     cicloColumna :
-//     for (let columna = 0; columna < participantes[fila].length; columna++) {
-//         if (participantes[fila][columna] === "Tan") continue cicloColumna;
-//         console.log(`[${fila}] [${columna}]`);
-//         console.log("Uso de continue " + participantes[fila][columna]);   
-//     }
-// }
-
-//tambien con cicloFila
-
-//------------------------------------
-
-//CODIGO SERGIO
-for (fila = 0 ; fila< participantes.length; fila++){
-    console.log(participantes[fila]); //Iterando las filas
-    for (columna = 0 ; columna< participantes[fila].length ; columna++ ){
-        console.log( participantes[fila][columna] );
-    }
-}
-
-// Usando break en ciclos aninados
-// Dejar de mostrar los nombre, cuando se encuentre a Tan
-
-//Usando una variable como bandera
 let continuarIteraciones = true;
 for (fila = 0 ; fila< participantes.length; fila++){   
         for (columna = 0 ; columna< participantes[fila].length ; columna++ ){
             console.log(`[${fila}][${columna}]`);
             if ( continuarIteraciones)
-                console.log("Uso de break " + participantes[fila][columna] );
-            if ( participantes[fila][columna] === "Tan") continuarIteraciones= false;
+                console.log("Uso de variable bandera " + participantes[fila][columna] );
+            if ( participantes[fila][columna] === "Tania") continuarIteraciones= false;
         }   
 }
 
-//Usando Break
-clicloFila:
-for (let fila = 0 ; fila< participantes.length; fila++){
-    cicloColumna:
-    for (let columna = 0 ; columna< participantes[fila].length ; columna++ ){
-        console.log(`[${fila}][${columna}]`);
-        console.log("Uso de break " + participantes[fila][columna] );
-        if ( participantes[fila][columna] === "Tan") break clicloFila;
-    } 
-}
 
-//Usando continue
-clicloFila:
-for (let fila = 0 ; fila< participantes.length; fila++){
-    cicloColumna:
-    for (let columna = 0 ; columna< participantes[fila].length ; columna++ ){
-        if ( participantes[fila][columna] === "Javi") continue clicloFila;
-        console.log(`[${fila}][${columna}]`);
-        console.log("Uso de continue " + participantes[fila][columna] );
-    } 
+// 2. Usando break
+cicloFila:
+for (fila = 0; fila < participantes.length; fila++) {
+    cicloColumna :
+    for (let columna = 0; columna < participantes[fila].length; columna++) {
+        console.log(`[${fila}] [${columna}]`);
+        console.log("Uso de break " + participantes[fila][columna]);
+        if (participantes[fila][columna] === "Tania") break cicloFila;
+    }
 }
 
 
-//Usando while
+// 3. Usando continue
+for (let fila = 0; fila < participantes.length; fila++) {
+    cicloColumna :
+    for (let columna = 0; columna < participantes[fila].length; columna++) {
+        if (participantes[fila][columna] === "Tania") continue cicloColumna;
+        console.log(`[${fila}] [${columna}]`);
+        console.log("Uso de continue C " + participantes[fila][columna]);   
+    }
+} 
 
-/*
+cicloFila:
+for (let fila = 0 ; fila< participantes.length; fila++){
+    cicloColumna:
+    for (let columna = 0 ; columna< participantes[fila].length ; columna++ ){
+        if ( participantes[fila][columna] === "Tania") continue cicloFila;
+        console.log(`[${fila}][${columna}]`);
+        console.log("Uso de continue F " + participantes[fila][columna] );
+    } 
+}
+
+
+/* Ciclo while
 
     Sintaxis
-
-
-
-
+        while ( condicion_verdadera) instrucción;
+    while ( condicion_verdadera){
+        instrucciones;
+    } 
 
 */
 
-/* let numIteracion = 0;
+//Usando while  AQUI ME QUEDÉ
+
+let numIteracion = 0;
 while (confirm("Quieres seguir iterando? ")) {
     console.log("Iteracion n. " + numIteracion++);
-} */
+}
 
 //Ejercicio: Preguntar del 1 al 10 y saber si el número que pensó el usuario es tal.
 
