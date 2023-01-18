@@ -232,7 +232,7 @@ if(numRebosos > 0 || teGustaReboso && vivesEnElExtranjero) // & es como una suma
 
 
 /* 
-        OPERADORES DE CORTO CIRCUITO
+        OPERADORES DE CORTO CIRCUITO   Es lo que más se utiliza ahhh! 
 
         OP1 && OP2 
         Si OP1 = true se realiza el resultado de OP2
@@ -253,20 +253,24 @@ let edadPersona = 18;
     // vale más el + que el &&
 
 
-    //OP1 || OP3  Si OP1 = true, se realiza el resultado de OP1
+    //OP1 || OP2  Si OP1 = true, se realiza el resultado de OP1
 
     let isOnline = true;
-    let isActive = true;
+    let isActive = true; // como estan en true se van a ejecutar
 
     if( isOnline){
         if (isActive)
-        console.log("Estamos in");
+        console.log("Estamos in*/Autorizados");
     }
 
     //segunda forma de hacerlo
-
-    if (isOnline && isActive)
-    console.log("Estamos in");
+        // T            T      =  True
+    if (isOnline && isActive) // se ejecuta y se imprime mensaje
+    //     F           T       = False ya no se ejecuta
+    //     T           F       = False ya no se ejecuta
+    console.log("Estamos in/autorizados");
 
     //es más limpio, más común 
-    isOnline && isActive && console.log("Estamos in");
+    isOnline && isActive && console.log("Estamos in/autorizados");
+
+    //
