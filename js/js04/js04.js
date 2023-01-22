@@ -314,7 +314,7 @@ for (let fila = 0 ; fila< participantes.length; fila++){
 
 */
 
-//Usando while  AQUI ME QUEDÉ
+//Usando while 
 
 let numIteracion = 0;
 while (confirm("Quieres seguir iterando? ")) {
@@ -323,87 +323,100 @@ while (confirm("Quieres seguir iterando? ")) {
 
 //Ejercicio: Preguntar del 1 al 10 y saber si el número que pensó el usuario es tal.
 
-//Se le pone un signo de admiracion ! para que cuando le de cancelar continue
-
 //OPCION 1 Es mejor, más descriptivo 
-/* let numAdivinar = 1;
+
+let numAdivinar = 1;
 while( !confirm(`${numAdivinar} es tu numero?`)) { 
     numAdivinar++;
-    //if (numAdivinar === 10) break;
+    if (numAdivinar === 10) break;
 }
-console.log("Tu número es el: " + numAdivinar); */
-//Mientras la condicion se cumpla ya no va a continuar, o algo asi
+console.log("Tu número es el: " + numAdivinar); 
+
+/* Notas: 
+    •En confirm se le pone un signo de admiración (!) para que cuando le de cancelar, por que ese no es número que pensé, pueda seguir preguntando.
+    •Mientras la condicion se cumpla ya no va a continuar, ie si llegua a 10, ahí temina la cuenta. 
+*/
+
+//Aquí es preincremento ++numAdivinar y se va de manera indefinida.
+/* numAdivinar = 0;
+    while( !confirm(`${++numAdivinar} es tu numero?`)); 
+    console.log("Tu número es el: " + numAdivinar); */
+
+
+//-------------------------------------------------
 
 //OPCION 2  Resulta algo enredado
 /* let numAdivinar = 1;
-while( !confirm(`${numAdivinar++} es tu numero?`)); 
-// importante poner el (;) de arriba AHH!! Si se lo quito entro en conflicto, es como si leyera una sola línea
-console.log("Tu número es el: " + --numAdivinar); */
+    while( !confirm(`${numAdivinar++} es tu numero?`)); 
+    console.log("Tu número es el: " + --numAdivinar); */
 
-//postincremento primero leemos el valor y luego aumentamos la variable 
+/*  Notas: 
+    •Es importante poner el (;) al final de la sentencia de while por que si se lo quito entra en conflicto, es como si leyera una sola línea y no va a arrojar lo correcto en consola.
+    •Está algo enredado por el uso de ++ y --
+*/
 
-// O que se cambia , uso de preincremento
 
-let numAdivinar = 0;
-while( !confirm(`${++numAdivinar} es tu numero?`)); 
-console.log("Tu número es el: " + numAdivinar);
 
 /*  Ciclo do-while
 
         Sintáxis
-           do {
+        do {
                 instrucciones;
-           } while(condición_verdadera),
+        } while(condición_verdadera);
 
-            Si la condición es vddra se ejecunta un ciclo.
+        Si la condición es vddra se ejecunta un ciclo.
 */
 
-let valor = 10;
+let valor = 0; //va a imprimir del 0 al 4
 while( valor < 5 ) {
-    console.log("while " + valor);  // o... 4  // nada 
+    console.log("while " + valor);
     valor++;
 }
 //Si se cumple el valor se ejecuta, si no nop
 
+/* No se cumple valor = 10 
+    No va a imprimir nada por que como el valor es de 10 y la condición while es que sea menor a 5, no cumple no se imprime.
+*/
 
-valor = 10;
+//valor = 0   va a imprimir del 0 al 4
+valor = 10;  // do while 10
 do {
-    console.log("do while " + valor); // 0 al 4  //   10
+    console.log("do while " + valor); 
     valor++; //importante el incremento si no entraria en loop infinito
 } while( valor < 5 );
 
-//Diferencia entre while y do while es que en do while fuerza a que se haga un ciclo
-
-
-/* 
-   •FIFO: first input first output --- alimentos Verduna nueva vs verdura de mas tiempo, ps saca el más viejo
-   •LIFO: last in first out 
-
-
-
+/* Diferencia entre while y do while
+    •while -->  hace primero la evaluación y luego ejecuta el código.
+    •do-while  --> ejecuta el código al menos una vez y luego evalúa la expresión
+                    fuerza a que se haga un ciclo
 */
 
-const alimentosPerecederos = [];
 
-//Agregando una caja
+/* Metodo FIFO y FIFO
+
+    •FIFO: first input first output --- alimentos fruta reciente vs fruta de más tiempo
+                                        sale la fruta con mayor tiempo.
+    •LIFO: last in first out 
+*/
 
 //USANDO FIFO  1ro en entrar primero en salir
+//Agregando una caja de manzana
+const alimentosPerecederos = [];
 alimentosPerecederos.push("manzanas lunes");
 alimentosPerecederos.push("manzanas miércoles"); 
 
 //Sacando manzanas del lunes 
-console.log("Sacando a la venta " + alimentosPerecederos.shift()); //lUNES
-console.log("Sacando a la venta " + alimentosPerecederos.shift()); //Miercoles
+console.log("Sacando a la venta " + alimentosPerecederos.shift()); //lunes 
+console.log("Sacando a la venta " + alimentosPerecederos.shift()); //miercoles
 
 
 //USANDO LIFO  
 //Ferretería
-const productos = ["desarmadores", "cemento"];
 
-//Agregar lices navideñas en diciembre
-productos.push("luces navideñas");                                  // primero en salir 
-console.log("Sacando a la venta " + productos.pop()); //otra opcion productos[2]  luces //sacamos ultimo elemt
+//Agregar luces navideñas en diciembre (que sean las primeras en salir)
+const productos = ["desarmadores", "cemento"];
+productos.push("luces navideñas");                                  
+console.log("Sacando a la venta " + productos.pop());// luces navideñas
 console.log("Sacando a la venta " + productos.pop()); // cemento
 console.log("Sacando a la venta " + productos.pop()); // desarmadores
-
-
+//otra opcion productos[2]  luces //sacamos ultimo elemento
